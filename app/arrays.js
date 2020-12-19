@@ -1,67 +1,31 @@
 exports = typeof window === "undefined" ? global : window;
 
 exports.arraysAnswers = {
-  indexOf: (arr, item) => arr.indexOf(item),
-  sum: (arr) => arr.reduce((accum, current) => accum + current),
-  remove: (arr, item) =>
-    arr.filter((currentElement) => currentElement !== item),
-  removeWithoutCopy: (arr, item) => {
-    let itemReference = arr.indexOf(item);
-    while (itemReference !== -1) {
-      arr.splice(itemReference, 1);
-      itemReference = arr.indexOf(item);
-    }
-    return arr;
-  },
+  indexOf: function (arr, item) {},
 
-  append: (arr, item) => {
-    arr.push(item);
-    return arr;
-  },
+  sum: function (arr) {},
 
-  truncate: (arr) => {
-    arr.pop();
-    return arr;
-  },
+  remove: function (arr, item) {},
 
-  prepend: (arr, item) => {
-    arr.unshift(item);
-    return arr;
-  },
+  removeWithoutCopy: function (arr, item) {},
 
-  curtail: (arr) => {
-    arr.shift();
-    return arr;
-  },
+  append: function (arr, item) {},
 
-  concat: (arr1, arr2) => {
-    return arr1.concat(arr2);
-  },
+  truncate: function (arr) {},
 
-  insert: (arr, item, index) => {
-    arr.splice(index, 0, item);
-    return arr;
-  },
+  prepend: function (arr, item) {},
 
-  count: (arr, item) =>
-    arr.filter((currentElement) => currentElement === item).length,
+  curtail: function (arr) {},
 
-  duplicates: (arr) => {
-    const duplicatesValues = arr.filter(
-      (currentElement, index) => arr.indexOf(currentElement) != index
-    );
-    return [...new Set(duplicatesValues)];
-  },
+  concat: function (arr1, arr2) {},
 
-  square: (arr) => arr.map((item) => Math.pow(item, 2)),
+  insert: function (arr, item, index) {},
 
-  findAllOccurrences: (arr, target) => {
-    const occurrencesIndex = [];
-    arr.forEach((item, index) => {
-      if (item === target) {
-        occurrencesIndex.push(index);
-      }
-    });
-    return occurrencesIndex;
-  },
+  count: function (arr, item) {},
+
+  duplicates: function (arr) {},
+
+  square: function (arr) {},
+
+  findAllOccurrences: function (arr, target) {},
 };
