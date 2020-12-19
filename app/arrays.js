@@ -1,31 +1,67 @@
 exports = typeof window === "undefined" ? global : window;
 
 exports.arraysAnswers = {
-  indexOf: function (arr, item) {},
+  indexOf: (arr, item) => arr.indexOf(item),
+  sum: (arr) => arr.reduce((accum, current) => accum + current),
+  remove: (arr, item) =>
+    arr.filter((currentElement) => currentElement !== item),
+  removeWithoutCopy: (arr, item) => {
+    let itemReference = arr.indexOf(item);
+    while (itemReference !== -1) {
+      arr.splice(itemReference, 1);
+      itemReference = arr.indexOf(item);
+    }
+    return arr;
+  },
 
-  sum: function (arr) {},
+  append: (arr, item) => {
+    arr.push(item);
+    return arr;
+  },
 
-  remove: function (arr, item) {},
+  truncate: (arr) => {
+    arr.pop();
+    return arr;
+  },
 
-  removeWithoutCopy: function (arr, item) {},
+  prepend: (arr, item) => {
+    arr.unshift(item);
+    return arr;
+  },
 
-  append: function (arr, item) {},
+  curtail: (arr) => {
+    arr.shift();
+    return arr;
+  },
 
-  truncate: function (arr) {},
+  concat: (arr1, arr2) => {
+    return arr1.concat(arr2);
+  },
 
-  prepend: function (arr, item) {},
+  insert: (arr, item, index) => {
+    arr.splice(index, 0, item);
+    return arr;
+  },
 
-  curtail: function (arr) {},
+  count: (arr, item) =>
+    arr.filter((currentElement) => currentElement === item).length,
 
-  concat: function (arr1, arr2) {},
+  duplicates: (arr) => {
+    const duplicatesValues = arr.filter(
+      (currentElement, index) => arr.indexOf(currentElement) != index
+    );
+    return [...new Set(duplicatesValues)];
+  },
 
-  insert: function (arr, item, index) {},
+  square: (arr) => arr.map((item) => Math.pow(item, 2)),
 
-  count: function (arr, item) {},
-
-  duplicates: function (arr) {},
-
-  square: function (arr) {},
-
-  findAllOccurrences: function (arr, target) {},
+  findAllOccurrences: (arr, target) => {
+    const occurrencesIndex = [];
+    arr.forEach((item, index) => {
+      if (item === target) {
+        occurrencesIndex.push(index);
+      }
+    });
+    return occurrencesIndex;
+  },
 };
